@@ -2,7 +2,6 @@ import { Card, CardContent, TextField, Button } from '@mui/material';
 import React, { useContext, useEffect } from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { ListContext } from '../contexts/ListProvider';
-// import { useFormik } from 'formik';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useForm, Controller } from 'react-hook-form';
@@ -13,7 +12,6 @@ const validationSchema = yup.object({
         .trim()
         .required('Please write something'),
 });
-
 
 export const InputForm = () => {
     const { createHistory, editText, editData } = useContext(ListContext);
@@ -30,7 +28,7 @@ export const InputForm = () => {
     }, [editData, setValue]);
 
     return (
-        <Card elevation={3} sx={{ minWidth: 300, marginBottom: 2, marginTop: 2 }}>
+        <Card elevation={2} sx={{ minWidth: 300, marginBottom: 2, marginTop: 2 }}>
             <CardContent sx={{ textAlign: 'end' }}>
                 <form onSubmit={handleSubmit(data => {
                     if (editData.id) {
@@ -43,15 +41,17 @@ export const InputForm = () => {
                     <Controller
                         name="text"
                         control={control}
-                        render={({ field }) => <TextField
-                            {...field}
-                            fullWidth
-                            error={errors.text && Boolean(errors.text)}
-                            helperText={errors.text?.message}
-                            variant="outlined"
-                            label="Write your to-do"
-                            value={field.value}
-                        />
+                        render={({ field: { name, onChange, value } }) =>
+                            <TextField
+                                name={name}
+                                onChange={onChange}
+                                fullWidth
+                                error={errors.text && Boolean(errors.text)}
+                                helperText={errors.text ? errors.text?.message : ''}
+                                variant="outlined"
+                                label="Write your to-do"
+                                value={value}
+                            />
                         }
                     />
                     <Button

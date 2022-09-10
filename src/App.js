@@ -1,14 +1,17 @@
-import { Container, createTheme, ThemeProvider } from '@mui/material';
-import { InputForm } from './components/InputForm';
-import { ToDoList } from './components/ToDoLIst';
+import { createTheme, ThemeProvider } from '@mui/material';
 import { ListContextProvider } from './contexts/ListProvider';
 import { LocalStorageContextProvider } from './contexts/LocalStorageProvider';
 import './styles/App.scss';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { MainPage } from './pages/MainPage';
+import { ArchivePage } from './pages/ArchivePage';
+import { Header } from './components/Header';
 
 const theme = createTheme({
   palette: {
     primary: {
       main: '#3f50b5',
+      contrastText: '#fff'
     },
     secondary: {
       main: '#4dd0e1',
@@ -24,12 +27,17 @@ function App() {
     <div className="App">
       <LocalStorageContextProvider>
         <ListContextProvider>
-          <ThemeProvider theme={theme}>
-            <Container>
-              <InputForm />
-              <ToDoList />
-            </Container>
-          </ThemeProvider>
+          <BrowserRouter>
+            <ThemeProvider theme={theme}>
+              <Header>
+                {/* <Settings /> */}
+              </Header>
+              <Routes>
+                <Route path='/' element={<MainPage />} />
+                <Route path='/archive' element={<ArchivePage />} />
+              </Routes>
+            </ThemeProvider>
+          </BrowserRouter>
         </ListContextProvider>
       </LocalStorageContextProvider>
     </div>

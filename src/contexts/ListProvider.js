@@ -2,9 +2,7 @@ import React, { createContext, useState, useContext } from "react";
 import { CreateUid } from "../utils/CreateUid";
 import { LocalStorageContext } from "./LocalStorageProvider";
 
-
 export const ListContext = createContext();
-
 
 export const ListContextProvider = ({ children }) => {
 
@@ -12,7 +10,7 @@ export const ListContextProvider = ({ children }) => {
     const [editData, setEditData] = useState({});
 
     const createHistory = item => {
-        historySetter([{...item, ...{id: CreateUid(), complete: false}}, ...history]);
+        historySetter([{ ...item, ...{ id: CreateUid(), complete: false } }, ...history]);
     };
 
     const removeHistory = id => {
@@ -57,4 +55,4 @@ export const ListContextProvider = ({ children }) => {
             {children}
         </ListContext.Provider>
     )
-}
+};
