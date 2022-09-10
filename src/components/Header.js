@@ -15,15 +15,15 @@ export const Header = () => {
                     textColor="secondary"
                 >
                     <Tab component={NavLink}
-                        to='/to-do-list-react'
+                        to='/to-do-list-react/'
                         label={
                             <Typography
                                 sx={{ p: 0.5 }}
-                                color={location.pathname === '/to-do-list-react' ? 'secondary' : 'primary.contrastText'}>
+                                color={location.pathname === '/to-do-list-react/' ? 'secondary' : 'primary.contrastText'}>
                                 Main
                             </Typography>
 
-                        } value={'/to-do-list-react'}
+                        } value={'/to-do-list-react/'}
                     />
                     <Tab component={NavLink}
                         to='/to-do-list-react/archive'

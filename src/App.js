@@ -33,7 +33,7 @@ function App() {
                 {/* <Settings /> */}
               </Header>
               <Routes>
-                <Route path='/to-do-list-react' element={<MainPage />} />
+                <Route path='/to-do-list-react/' element={<MainPage />} />
                 <Route path='/to-do-list-react/archive' element={<ArchivePage />} />
               </Routes>
             </ThemeProvider>
