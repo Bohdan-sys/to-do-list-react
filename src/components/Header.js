@@ -15,28 +15,28 @@ export const Header = () => {
                     textColor="secondary"
                 >
                     <Tab component={NavLink}
-                        to='/'
+                        to='/to-do-list-react'
                         label={
                             <Typography
                                 sx={{ p: 0.5 }}
-                                color={location.pathname === '/' ? 'secondary' : 'primary.contrastText'}>
+                                color={location.pathname === '/to-do-list-react' ? 'secondary' : 'primary.contrastText'}>
                                 Main
                             </Typography>
 
-                        } value={'/'}
+                        } value={'/to-do-list-react'}
                     />
                     <Tab component={NavLink}
-                        to='/archive'
+                        to='/to-do-list-react/archive'
                         label={
                             <Badge badgeContent={history.filter(item => item.complete).length} color="error" max={99}>
                                 <Typography
                                     sx={{ p: 0.5 }}
-                                    color={location.pathname === '/archive' ? 'secondary' : 'primary.contrastText'}>
+                                    color={location.pathname === '/to-do-list-react/archive' ? 'secondary' : 'primary.contrastText'}>
                                     Archive
                                 </Typography>
                             </Badge>
                         }
-                        value={'/archive'}
+                        value={'/to-do-list-react/archive'}
                     />
                 </Tabs>
             </AppBar>
